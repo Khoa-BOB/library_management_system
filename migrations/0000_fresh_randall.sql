@@ -1,0 +1,18 @@
+CREATE TYPE "public"."book_status" AS ENUM('BORROWED', 'RETURN');--> statement-breakpoint
+CREATE TYPE "public"."role" AS ENUM('USER', 'ADMIN');--> statement-breakpoint
+CREATE TYPE "public"."satus" AS ENUM('PENDING', 'APPROVED', 'REJECTED');--> statement-breakpoint
+CREATE TABLE "users_table" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"full_name" varchar(255) NOT NULL,
+	"email" text NOT NULL,
+	"university_id" integer NOT NULL,
+	"password" text NOT NULL,
+	"university_card" text NOT NULL,
+	"status" "satus" DEFAULT 'PENDING',
+	"role" "role" DEFAULT 'USER',
+	"lastActivityDate" date DEFAULT now() NOT NULL,
+	"created_at" timestamp with time zone DEFAULT now(),
+	CONSTRAINT "users_table_id_unique" UNIQUE("id"),
+	CONSTRAINT "users_table_email_unique" UNIQUE("email"),
+	CONSTRAINT "users_table_university_id_unique" UNIQUE("university_id")
+);
