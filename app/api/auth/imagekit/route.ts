@@ -13,7 +13,7 @@ export async function GET() {
     publicKey: publicKey,
   });
 
-  return Response.json({
+  return NextResponse.json({
     token,
     expire,
     signature,
