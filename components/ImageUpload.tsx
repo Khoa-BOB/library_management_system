@@ -49,6 +49,7 @@ const ImageUpload = ({
   const authenticator = async () => {
     try {
       // Perform the request to the upload authentication endpoint.
+      console.log("API endpoint:", config.env.apiEndpoint);
       const response = await fetch(
         `${config.env.apiEndpoint}/api/auth/imagekit`,
       );
