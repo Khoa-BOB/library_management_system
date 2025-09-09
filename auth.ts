@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { compare } from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
